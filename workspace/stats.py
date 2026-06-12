@@ -1,8 +1,5 @@
-def word_count():
-  with open("books/frankenstein.txt") as e:
-    book = e.read()
-    num_words = len(book.split())
-    print(f"Found {num_words} total words")
+def word_count(text):
+    return len(text.split())
 
 
 def get_chars_dict(text):
@@ -14,3 +11,19 @@ def get_chars_dict(text):
     else:
       chars_dict[c] = 1
   return chars_dict
+
+def sort_on(book: tuple[str, int]) -> int:
+  return book[1]
+
+
+def chars_dict_to_sorted_list(char_dict: dict[str, int]) -> list[tuple[str, int]]:
+    char_list = []
+
+    for char in char_dict:
+        count = char_dict[char]
+        char_list.append((char, count))
+
+    sorted_list = sorted(char_list, key=sort_on, reverse=True)
+
+    return sorted_list
+
